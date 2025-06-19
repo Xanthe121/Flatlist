@@ -1,36 +1,44 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity, Image} from 'react-native';
 
+
 var FAKE_DATA = [
   {
     id: '1',
-    note: 'Congrat 100!',
+    note: 'Momo',
     date: '2025/01/01',
+    imagePath: require('../../src/img/images (1).jpg')
   },
   {
     id: '2',
-    note: 'User Name',
+    note: 'Doudou',
     date: '2025/01/02',
+    imagePath: require('../../src/img/images (2).jpg')
+    
   },
   {
     id: '3',
-    note: 'Donate $1234',
+    note: 'ToFu',
     date: '2025/01/03',
+    imagePath: require('../../src/img/images (3).jpg')
   },
   {
     id: '4',
-    note: 'Run 100m!',
+    note: 'Kuro',
     date: '2025/01/04',
+    imagePath: require('../../src/img/images.jpg')
   },
   {
     id: '5',
-    note: 'Write diary',
+    note: 'Baga',
     date: '2025/01/02',
+    imagePath: require('../../src/img/下載 (1).jpg')
   },
   {
     id: '6',
-    note: 'Go Party',
+    note: 'Gniongnion',
     date: '2025/01/03',
+    imagePath: require('../../src/img/下載.jpg')
   },
 ];
 
@@ -47,7 +55,7 @@ export default function HomeScreen({ navigation }) {
         return styles.preparingButton;
       case '已取消':
         return styles.cancelledButton;
-      case '已完成':
+      case '領養':
         return styles.completedButton;
       default:
         return styles.defaultButton;
@@ -61,25 +69,25 @@ export default function HomeScreen({ navigation }) {
           {/* Left side - Image and main info */}
           <View style={styles.leftSection}>
             <Image 
-              source={require('../../src/img/Screenshot 2025-06-18 183730.png')} 
-              style={styles.PetImage}
-            />
-            
+             source={cases.imagePath} // Use the image path from data
+               style={styles.PetImage}
+                />
             <View style={styles.textSection}>
               <Text style={styles.restaurantName} numberOfLines={1}>
                 {cases.note}
               </Text>
-            
+              
               <Text style={styles.dateText}>
                 {cases.date} • {cases.status}
               </Text>
+              
             </View>
           </View>
 
           {/* Right side - Action button */}
           <View style={styles.rightSection}>
             <TouchableOpacity 
-              style={getStatusButtonStyle(cases)}
+              style={getStatusButtonStyle(cases.status)}
               onPress={() => showNoticeDetail(cases)}
             >
               <Text style={styles.buttonText}>
@@ -214,3 +222,4 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
+
