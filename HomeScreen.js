@@ -1,44 +1,48 @@
 import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet, Button, FlatList, TouchableOpacity, Image} from 'react-native';
 
-
 var FAKE_DATA = [
   {
     id: '1',
     note: 'Momo',
     date: '2025/01/01',
-    imagePath: require('../../src/img/images (1).jpg')
+    imagePath: require('../../src/img/images (1).jpg'),
+    status: '領養'
   },
   {
     id: '2',
     note: 'Doudou',
     date: '2025/01/02',
-    imagePath: require('../../src/img/images (2).jpg')
-    
+    imagePath: require('../../src/img/images (2).jpg'),
+    status: '領養'
   },
   {
     id: '3',
     note: 'ToFu',
     date: '2025/01/03',
-    imagePath: require('../../src/img/images (3).jpg')
+    imagePath: require('../../src/img/images (3).jpg'),
+    status: '準備中'
   },
   {
     id: '4',
     note: 'Kuro',
     date: '2025/01/04',
-    imagePath: require('../../src/img/images.jpg')
+    imagePath: require('../../src/img/images.jpg'),
+    status: '領養'
   },
   {
     id: '5',
     note: 'Baga',
     date: '2025/01/02',
-    imagePath: require('../../src/img/下載 (1).jpg')
+    imagePath: require('../../src/img/下載 (1).jpg'),
+    status: '已取消'
   },
   {
     id: '6',
     note: 'Gniongnion',
     date: '2025/01/03',
-    imagePath: require('../../src/img/下載.jpg')
+    imagePath: require('../../src/img/下載.jpg'),
+    status: '領養'
   },
 ];
 
@@ -46,7 +50,7 @@ export default function HomeScreen({ navigation }) {
   const [dataSource, setDataSource] = useState([]);
 
   const showNoticeDetail = (cases) => {
-    navigation.push('HelloScreen', {passProps: cases});
+    navigation.navigate('HelloScreen', {passProps: cases});
   }
 
   const getStatusButtonStyle = (status) => {
@@ -80,7 +84,7 @@ export default function HomeScreen({ navigation }) {
               <Text style={styles.dateText}>
                 {cases.date} • {cases.status}
               </Text>
-              
+            
             </View>
           </View>
 
@@ -94,6 +98,7 @@ export default function HomeScreen({ navigation }) {
                 {cases.status === '準備中' ? '取消' : '明細'}
               </Text>
             </TouchableOpacity>
+            
           </View>
         </View>
       </View>
@@ -222,4 +227,3 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
 });
-

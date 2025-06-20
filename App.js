@@ -33,6 +33,8 @@ export default function App() {
               iconName = 'briefcase';
             } else if (route.name === 'Apple') {
               iconName = 'nutrition';
+            } else if (route.name === 'HelloScreen') {
+              iconName = 'information-circle';
             }
             
             return (
@@ -51,6 +53,11 @@ export default function App() {
         <Stack.Screen name="Settings" component={HelloScreen} />
         <Stack.Screen name="Portfolio" component={PortfolioScreen} />
         <Stack.Screen name="Apple" component={AppleScreen} />
+        <Stack.Screen 
+          name="HelloScreen" 
+          component={HelloScreen}
+          options={{ title: 'Pet Details' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
